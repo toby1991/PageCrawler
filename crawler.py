@@ -23,8 +23,8 @@ def crawl(page_name, base_url, first_page, retry_times = 3):
     
 
 def main():
-    theme_name = 'intuitive'
-    base_url = 'http://aqvatarius.com/themes/intuitive/'
+    theme_name = 'materialism'
+    base_url = 'http://www.theme-guys.com/materialism/html/'
     #base_url = 'http://themes.krzysztof-furtak.pl/themes/malpha2/malpha2/'
     page = 'index.html'
     page_crawled = []
@@ -129,7 +129,10 @@ class crawler:
         if self.page.find('//') == -1:
             url = self.base_url + self.page
         else:
-            url = self.page
+            if self.page[0:2] == '//':
+                url = 'http:'+self.page
+            else:
+                url = self.page
         self.is_ok = self.curlGetHTML(url, url_type)
         # self.html = ''
         # self.d = pq(self.html)
@@ -146,10 +149,14 @@ class crawler:
     # 获取A标签地址回调
     def getAHref(self, i, val):
         href = self.d(val).attr('href')
+        href_exception = ['sms://', 'tel:', 'mailto:', 'javascript:', '#', '.png', '.jpg', '.jpeg', '.ico']
         if len(href) > 0:
-            if href[-1] != '/' and href != self.base_url and href.find('sms://') == -1 and href.find(
-                    'tel:') == -1 and href.find('#') == -1 and href.find('.png') == -1 and href.find(
-                    '.jpg') == -1 and href.find('.jpeg') == -1 and href.find('.ico') == -1:
+            find_exception = False
+            for ex in href_exception:
+                if href.find(ex) != -1:
+                    find_exception = True
+                    break
+            if href[-1] != '/' and href != self.base_url and find_exception == False:
                 href = self.formatLink(href, self.base_url)
                 self.page_arr.append(href)
 
