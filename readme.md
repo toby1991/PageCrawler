@@ -26,6 +26,6 @@ if result == True:
     print('oh yeah.')
 ```
 after these codes, the pages will appear in the folder named variable `page_name`, in this example, folder named `xxx`
-###0x04 WHAT CANNOT DONE
+###0x04 WHAT CANNOT DO
 ***
 In currently version, it can just crawl for html page, pages that written by angularjs would cannot be crawled.
