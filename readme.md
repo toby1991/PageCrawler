@@ -16,15 +16,15 @@ Written by Python 3.5
 ***
 ```Python
 import crawler
-page_name = 'xxx'`   
-base_url = 'http://xxx/themes/xxx/'   
-first_page = 'index.html'   
-retry_times = 3   
-result = crawler.crawl(page_name, base_url, first_page, retry_times)   
-if result == True:   
+page_name = 'xxx' 
+base_url = 'http://xxx/themes/xxx/'
+first_page = 'index.html'
+retry_times = 3
+result = crawler.crawl(page_name, base_url, first_page, retry_times)
+if result == True:
     print('oh yeah.')
 ```
-after these codes, the pages will appear in the directory named `page_name`
+after these codes, the pages will appear in the folder named variable `page_name`, in this example, folder named `xxx`
 ###0x04 WHAT CANNOT DONE
 ***
 In currently version, it can just crawl for html page, pages that written by angularjs would cannot be crawled.
